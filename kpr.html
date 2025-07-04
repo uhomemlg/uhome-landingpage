@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulasi KPR - Uhome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0b1e3f;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .logo-container img {
+      height: 200px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #102c57;
+      border-radius: 10px;
+      padding: 30px;
+      border: 2px solid gold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: gold;
+      margin-bottom: 25px;
+    }
+
+    label {
+      margin-top: 10px;
+      display: block;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: gold;
+      color: #0b1e3f;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-weight: bold;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #hasil {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #wa-button {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    #wa-button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="https://i.imgur.com/TZand2O.png" alt="Logo Uhome">
+  </div>
+
+  <div class="container">
+    <h2>Simulasi KPR</h2>
+
+    <label>Harga Rumah (Rp)</label>
+    <input type="number" id="harga" placeholder="Contoh: 500000000" />
+
+    <label>Uang Muka (DP) (Rp)</label>
+    <input type="number" id="dp" placeholder="Contoh: 100000000" />
+
+    <label>Tenor (Tahun)</label>
+    <input type="number" id="tenor" placeholder="Contoh: 15" />
+
+    <label>Suku Bunga (%)</label>
+    <input type="number" id="bunga" placeholder="Contoh: 7" />
+
+    <button onclick="hitungKPR()">Hitung Cicilan</button>
+
+    <div id="hasil"></div>
+
+    <div id="wa-button">
+      <a href="https://wa.me/6282220009945?text=Halo%20saya%20ingin%20konsultasi%20mengenai%20KPR%20di%20Uhome" target="_blank">
+        Detail
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function hitungKPR() {
+      let harga = parseFloat(document.getElementById('harga').value);
+      let dp = parseFloat(document.getElementById('dp').value);
+      let tenor = parseInt(document.getElementById('tenor').value);
+      let bunga = parseFloat(document.getElementById('bunga').value) / 100;
+
+      let pinjaman = harga - dp;
+      let bungaBulanan = bunga / 12;
+      let jumlahCicilan = (pinjaman * bungaBulanan) / 
+                          (1 - Math.pow(1 + bungaBulanan, -tenor * 12));
+
+      document.getElementById('hasil').innerHTML =
+        `Estimasi cicilan per bulan:<br><b>Rp ${Math.round(jumlahCicilan).toLocaleString('id-ID')}</b>`;
+
+      document.getElementById('wa-button').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

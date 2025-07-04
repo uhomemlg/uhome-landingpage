@@ -1,1 +1,106 @@
 <!DOCTYPE html><html><head><title>Gallery</title></head><body><h1>Gallery Page</h1></body></html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Uhome</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #20c997, #007bff); /* Tosca ke biru */
+      color: #fff;
+      text-align: center;
+    }
+
+    .header {
+      padding: 50px 20px 20px;
+      position: relative;
+    }
+
+    .header::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background-color: #003366; /* Biru tua */
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: bold;
+      margin: 0;
+      color: #ffffff;
+      z-index: 1;
+      position: relative;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .tagline {
+      font-size: 1.4em;
+      font-weight: 500;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+
+    .cta {
+      background-color: #6c757d;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 50px;
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>GALLERY</h1>
+  </div>
+
+  <div class="gallery">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery1.jpg" alt="Foto 1">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery2.jpg" alt="Foto 2">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery3.jpg" alt="Foto 3">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery4.jpg" alt="Foto 4">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery5.jpg" alt="Foto 5">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery6.jpg" alt="Foto 6">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery7.jpg" alt="Foto 7">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery8.jpg" alt="Foto 8">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery9.jpg" alt="Foto 9">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery10.jpg" alt="Foto 10">
+    <img src="https://raw.githubusercontent.com/uhomemlg/uhome-landingpage/main/gallery11.jpg" alt="Foto 11">
+  </div>
+
+  <div class="tagline">Sekarang saatnya kamu menentukan hunian terbaikmu</div>
+
+  <a class="cta" href="https://wa.me/6282220009945" target="_blank">
+    FREE KONSULTASI
+  </a>
+
+</body>
+</html>

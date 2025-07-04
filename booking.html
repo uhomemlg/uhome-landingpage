@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Booking Uhome</title>
+  <style>
+    body {
+      background-color: #fff7ef;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #ffffff;
+      border: 2px solid #f4a261;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #e76f51;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #e76f51;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Booking Properti</h2>
+    <form onsubmit="return kirimWA()">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" required><label for="telepon">Nomor WhatsApp</label>
+  <input type="text" id="telepon" required>
+
+  <label for="tipe">Pilih Tipe Rumah</label>
+  <select id="tipe" required>
+    <option value="">-- Pilih --</option>
+    <option value="Tipe 42">Tipe 42</option>
+    <option value="Tipe 50">Tipe 50</option>
+    <option value="Tipe 70">Tipe 70</option>
+  </select>
+
+  <label for="lokasi">Lokasi Cluster</label>
+  <select id="lokasi" required>
+    <option value="">-- Pilih --</option>
+    <option value="Goldenland Residence Pakisaji">Goldenland Pakisaji</option>
+    <option value="Tambak Asri">Tambak Asri</option>
+    <option value="Bakalan Bululawang">Bakalan</option>
+    <option value="Bululawang Permai">Bululawang</option>
+  </select>
+
+  <label for="jadwal">Jadwal Kunjungan</label>
+  <input type="date" id="jadwal">
+
+  <label for="catatan">Catatan Tambahan</label>
+  <textarea id="catatan" rows="3"></textarea>
+
+  <button type="submit">BOOKING</button>
+</form>
+
+  </div>  <script>
+    function kirimWA() {
+      const nama = document.getElementById("nama").value;
+      const telp = document.getElementById("telepon").value;
+      const tipe = document.getElementById("tipe").value;
+      const lokasi = document.getElementById("lokasi").value;
+      const jadwal = document.getElementById("jadwal").value;
+      const catatan = document.getElementById("catatan").value;
+
+      const pesan = `Halo, saya ingin booking properti:\n\nNama: ${nama}\nWhatsApp: ${telp}\nTipe Rumah: ${tipe}\nLokasi: ${lokasi}\nJadwal Kunjungan: ${jadwal}\nCatatan: ${catatan}`;
+
+      const url = `https://wa.me/6282220009945?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
+      return false;
+    }
+  </script></body>
+</html>

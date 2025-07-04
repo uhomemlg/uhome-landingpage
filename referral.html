@@ -1,1 +1,128 @@
-<!DOCTYPE html><html><head><title>Referral</title></head><body><h1>Referral Form</h1></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Referral - Uhome</title>
+  <style>
+    body {
+      background-color: #0b1e3f;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #102c57;
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px solid gold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 120px;
+    }
+
+    h2 {
+      color: gold;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background-color: gold;
+      color: #0b1e3f;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #fdd835;
+    }
+
+    .tagline {
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: bold;
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo Uhome -->
+  <div class="logo">
+    <img src="https://i.imgur.com/TZand2O.png" alt="Logo Uhome">
+  </div>
+
+  <div class="container">
+    <h2>Form Referral</h2>
+
+    <form onsubmit="kirimWA(); return false;">
+      <label>Nama Anda (Referral)</label>
+      <input type="text" id="nama" required>
+
+      <label>No. Telepon Anda</label>
+      <input type="text" id="telepon" required>
+
+      <label>Nama Calon Pembeli</label>
+      <input type="text" id="namaPembeli" required>
+
+      <label>No. Telepon Calon Pembeli</label>
+      <input type="text" id="teleponPembeli" required>
+
+      <label>Catatan Tambahan</label>
+      <textarea id="catatan" rows="3"></textarea>
+
+      <button type="submit">Kirim ke WhatsApp</button>
+    </form>
+  </div>
+
+  <!-- Tagline -->
+  <div class="tagline">Bonus referral Rp 500.000</div>
+
+  <script>
+    function kirimWA() {
+      let nama = document.getElementById("nama").value;
+      let telepon = document.getElementById("telepon").value;
+      let namaPembeli = document.getElementById("namaPembeli").value;
+      let teleponPembeli = document.getElementById("teleponPembeli").value;
+      let catatan = document.getElementById("catatan").value;
+
+      let pesan = `Halo Uhome,%0ASaya ingin mendaftarkan referral:%0A%0A*Nama Saya:* ${nama}%0A*Telepon Saya:* ${telepon}%0A%0A*Calon Pembeli:* ${namaPembeli}%0A*No. Telepon:* ${teleponPembeli}%0A%0A*Catatan:* ${catatan}`;
+
+      let waURL = `https://wa.me/6282220009945?text=${pesan}`;
+      window.open(waURL, "_blank");
+    }
+  </script>
+
+</body>
+</html>

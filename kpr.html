@@ -46,10 +46,11 @@
 
     input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
       border-radius: 5px;
       border: none;
+      font-size: 16px;
     }
 
     button {
@@ -97,34 +98,49 @@
     <h2>Simulasi KPR</h2>
 
     <label>Harga Rumah (Rp)</label>
-    <input type="number" id="harga" placeholder="Contoh: 525000000" />
+    <input type="text" id="harga" placeholder="Contoh: Rp 525.000.000" oninput="formatRupiah(this)" />
 
     <label>Uang Muka (DP) (Rp)</label>
-    <input type="number" id="dp" placeholder="Contoh: 100000000" />
+    <input type="text" id="dp" placeholder="Contoh: Rp 100.000.000" oninput="formatRupiah(this)" />
 
     <label>Tenor (Tahun)</label>
-    <input type="number" id="tenor" placeholder="Contoh: 20" />
+    <input type="number" id="tenor" placeholder="Contoh: 30" />
 
     <label>Suku Bunga (%)</label>
-    <input type="number" id="bunga" placeholder="Contoh: 4,99" />
+    <input type="number" id="bunga" placeholder="Contoh: 5,25" />
 
-    <button onclick="hitungKPR()">Hitung Cicilan</button>
+    <button onclick="hitungKPR()">H I T U N G</button>
 
     <div id="hasil"></div>
 
     <div id="wa-button">
       <a href="https://wa.me/6282220009945?text=Halo%20saya%20ingin%20konsultasi%20mengenai%20KPR%20di%20Uhome" target="_blank">
-        Detail
+        Tanya KPR
       </a>
     </div>
   </div>
 
   <script>
+    function formatRupiah(input) {
+      let value = input.value.replace(/[^0-9]/g, '');
+      let formatted = new Intl.NumberFormat('id-ID').format(value);
+      input.value = 'Rp ' + formatted;
+    }
+
+    function parseRupiah(rp) {
+      return parseInt(rp.replace(/[^0-9]/g, '')) || 0;
+    }
+
     function hitungKPR() {
-      let harga = parseFloat(document.getElementById('harga').value);
-      let dp = parseFloat(document.getElementById('dp').value);
+      let harga = parseRupiah(document.getElementById('harga').value);
+      let dp = parseRupiah(document.getElementById('dp').value);
       let tenor = parseInt(document.getElementById('tenor').value);
       let bunga = parseFloat(document.getElementById('bunga').value) / 100;
+
+      if (!harga || !dp || !tenor || isNaN(bunga)) {
+        alert("Mohon isi semua kolom dengan benar.");
+        return;
+      }
 
       let pinjaman = harga - dp;
       let bungaBulanan = bunga / 12;
